@@ -1,0 +1,37 @@
+{% extends 'nav.html' %}
+{% block content %}
+<main class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1 class="text-center"> MUESTRA 2 TABLAS</h1>
+            {{error}}
+            
+            <ul class="list-group">               
+                {% for persona in people %}
+                <a class="list-group-item" href="#">
+                    <header class="d-flex justify-content-between">
+                    <h3 class="fw-bold">{{persona.name}}</h3>                        
+                    <p>Edad: {{persona.age}}</p>
+                    </header>
+                </a>
+                {% endfor %}
+            </ul>
+        </div>
+        <div  class="col-md-6 offset-md-3" class="card card-body">
+            <ul class="list-group">               
+                {% for task in tasks %}
+                <a class="list-group-item" href="#">
+                    <header class="d-flex justify-content-between">
+                    <h3 class="fw-bold">{{task.title}}</h3>
+                    <p>{{task.description}}</p>
+                    </header>
+                </a>
+                {% endfor %}
+            </ul>
+        </div>
+
+        
+    </div>
+</main>
+{% endblock %}
+

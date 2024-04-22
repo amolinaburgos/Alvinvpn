@@ -1,0 +1,34 @@
+{% extends 'nav.html' %}
+{% block content %}
+<main class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1 class="text-center"> TAREAS PENDIENTES</h1>
+            {{error}}
+            
+            <ul class="list-group">               
+                {% for tarea in tareas %}
+                <a class="list-group-item" href="{% url 'detalleTareas'  tarea.id %}">
+                    <header class="d-flex justify-content-between">
+                    {% if tarea.important %}
+                        <h3 class="fw-bold text-success">{{tarea.title}}</h3>
+                        {% else %}
+                        <h3 class="fw-bold">{{tarea.title}}</h3>
+                        {% endif %}
+                        <p>{{tarea.user.username}}</p>                        
+                    </header>
+                    <p>{{tarea.descripcion}}</p>                    
+                </a>
+                <p>{{tarea.datecompleted|date:'M j Y:i'}}</p>
+                {% endfor %}
+            </ul>
+
+           
+            
+            <a href="{% url 'listarTareas2all' %}">Ver todas las tareas</a>
+        </div>
+    </div>
+
+</main>
+{% endblock %}
+

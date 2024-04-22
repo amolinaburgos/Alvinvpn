@@ -1,0 +1,11 @@
+{% extends 'nav.html' %}
+{% block content %}
+
+<h1> TAREAS</h1>
+
+{% for task in tasks %}
+<h1>{{task.title}}</h1>
+{{task.description}}
+{% endfor %}
+
+{% endblock %}

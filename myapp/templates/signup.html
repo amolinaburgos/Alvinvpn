@@ -1,0 +1,38 @@
+{% extends 'nav.html' %}
+{% load static %}
+
+{% block content %}
+<main class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4 mt-5">
+            <form method="POST" class="card card-body">
+                <div class="text-center"><img class="mb-4" src="{% static '1.jpg' %}" alt="My image" width="72" height="72"></div>
+                <h1 class="text-center">Registro de usuarios</h1>
+                {{ error }}
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label for="username">Usuario: </label>
+                    <input type="text" name="username" id="username" class="form-control" placeholder="Nombre de usuario">
+                </div>
+
+                <div class="mb-3">
+                    <label for="password1">Password: </label>
+                    <input type="password" name="password1" id="password1" class="form-control" placeholder="Password">
+                </div>
+
+                <div class="mb-3">
+                    <label for="password2">Repita su password: </label>
+                    <input type="password" name="password2" id="username" class="form-control" placeholder="Repita su password">
+                </div>
+                
+                <button class="btn btn-dark btn-primary">
+                    Ingresar
+                </button>
+            </form>
+            <p class="mt-5 mb-3 text-muted text-center">/\ |_ \/ | |\| VPN</p>
+    </div>
+    </div>
+</main>
+    
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'nav.html' %}
+{% block content %}
+
+<h1>PROYECTO: {{project}}</h1>
+<h1>Tareas pendientes:</h1>
+
+
+{% for task in tasks %}
+<p>{{task.title}}</p>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'nav.html' %}
+
+{% block content %}
+<main class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1 class="text-center">TODAS LAS TAREAS</h1>
+
+            <ul class="list-group"> 
+                {% for tarea in tareas %}
+                <div class="list-group-item">
+                <header class="d-flex justify-content-between">
+                <h3 class="fw-bold">{{tarea.title}}</h3>
+                <a>Usuario: {{tarea.user}}</a>
+                </header>
+                <a>Descripcion: {{tarea.descripcion}}</a>
+                <a>Tarea iniciada: {{tarea.created}}</a>
+                <a>Tarea finalizada: {{tarea.datecompleted}}</a>
+                <a>Importante: {{tarea.important}}</a>
+            </div>
+            <p></p>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</main>
+{% endblock %}

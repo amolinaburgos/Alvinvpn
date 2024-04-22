@@ -1,0 +1,9 @@
+{% extends 'nav.html' %}
+{% block content %}
+
+<h1> PROYECTOS</h1>
+{% for project in projects %}
+<a href="{% url 'projectsDetail'  project.id %}"><span class="d-block p-2 bg-dark text-white">{{project.name}}</span></a>
+{% endfor %}
+
+{% endblock %}

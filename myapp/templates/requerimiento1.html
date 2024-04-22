@@ -1,0 +1,13 @@
+{% extends 'nav.html' %}
+{% block content %}
+
+<h1>Requerimiento 1 - # - Mostrar listados seleccionando filtro</h1>
+
+<h1>Proyectos:</h1>
+<ul>
+    {% for user in projects %}
+    <a href=""> <li>{{ user.name}}</li> </a>
+    {% endfor %}
+    </ul>
+
+{% endblock %}
