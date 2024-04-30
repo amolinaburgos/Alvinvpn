@@ -3,27 +3,31 @@
 <main class="container">
     <div class="row">
         <div class="col-md-6 offset-md-3">
-            <h1 class="text-center"> MUESTRA 2 TABLAS</h1>
+            <h1 class="text-center"> DATOS DE TABLA PERSONA</h1>
             {{error}}
-            
             <ul class="list-group">               
                 {% for persona in people %}
-                <a class="list-group-item" href="#">
+                <a class="list-group-item" href="{% url 'tareaModificarpersona' persona.id %}">
                     <header class="d-flex justify-content-between">
-                    <h3 class="fw-bold">{{persona.name}}</h3>                        
+                    <h3 class="fw-bold text-uppercase">{{persona.name}}</h3>                        
                     <p>Edad: {{persona.age}}</p>
+                    <p>ID: {{persona.id}}</p>
                     </header>
+                    <p>ID Proyecto en el que participa: {{persona.project.id}}</p>
                 </a>
                 {% endfor %}
             </ul>
         </div>
+        
         <div  class="col-md-6 offset-md-3" class="card card-body">
+            <p><h1 class="text-center"> DATOS DE TABLA TASK</h1></p>
             <ul class="list-group">               
                 {% for task in tasks %}
-                <a class="list-group-item" href="#">
+                <a class="list-group-item" href="{% url 'tareaModificartask' task.id %}">
                     <header class="d-flex justify-content-between">
-                    <h3 class="fw-bold">{{task.title}}</h3>
-                    <p>{{task.description}}</p>
+                    <h3 class="fw-bold text-uppercase">Tarea: {{task.title}}</h3>
+                    <p>Descripcion de Tarea: {{task.description}}</p>    
+                    <p>Proyecto de la tarea: {{task.project}}</p>                
                     </header>
                 </a>
                 {% endfor %}
@@ -34,4 +38,3 @@
     </div>
 </main>
 {% endblock %}
-

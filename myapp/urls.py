@@ -25,7 +25,11 @@ urlpatterns = [
     path('signin/', views.signin, name="signin"),
     path('crearTarea2/', views.crearTarea2, name="crearTarea2"),
     path('tareaVerdatos/', views.tareaVerdatos, name="tareaVerdatos"),
-        
+    path('tareaModificarpersona/<int:persona_id>', views.tareaModificarpersona, name="tareaModificarpersona"),
+    path('tareaModificartask/<int:task_id>', views.tareaModificartask, name="tareaModificartask"),
+
+    
+    
     ]
 
 #Tareas que quiero realizar:

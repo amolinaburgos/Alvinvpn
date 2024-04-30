@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Project, Task, Persona, Ingreso, Egreso, Task2
-from .forms import CrearNuevaTarea, CrearProyecto, CrearPersona, CrearTarea2
+from .forms import CrearNuevaTarea, CrearProyecto, CrearPersona, CrearTarea2, CrearPersona2, CrearTask
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -197,6 +197,37 @@ def detalleTareas(request, task2_id):
             return render (request, 'task2Detail.html', {'task': task, 'form': form, 'error': "Error actualizando"})
 
 
+@login_required
+def tareaModificarpersona(request, persona_id):
+    if request.method == 'GET':
+        persona = get_object_or_404(Persona, pk=persona_id) 
+        form = CrearPersona2(instance=persona)
+        return render (request, 'tareaModificarpersona.html', {'persona': persona, 'form': form})
+    else:
+        try:
+            persona = get_object_or_404(Persona, pk=persona_id)
+            form = CrearPersona2(request.POST, instance=persona)
+            form.save()
+            return redirect('tareaVerdatos')
+        except ValueError:
+            return render (request, 'tareaModificarpersona.html', {'persona': persona, 'form': form, 'error': "Error actualizando"})
+
+
+def tareaModificartask(request, task_id):
+    if request.method == 'GET':
+        task = get_object_or_404(Task, pk=task_id) 
+        form = CrearTask(instance=task)
+        return render (request, 'tareaModificartask.html', {'task': task, 'form': form})
+    else:
+        try:
+            task = get_object_or_404(Task, pk=task_id)
+            form = CrearTask(request.POST, instance=task)
+            form.save()
+            return redirect('tareaVerdatos')
+        except ValueError:
+            return render (request, 'tareaModificartask.html', {'task': task, 'form': form, 'error': "Error actualizando"})
+
+
 @login_required       
 def tareaCompleta(request, task2_id):
     task = get_object_or_404(Task2, pk=task2_id, user=request.user)
@@ -204,6 +235,7 @@ def tareaCompleta(request, task2_id):
         task.datecompleted = timezone.now()
         task.save()
         return redirect ('tasks2')
+    
 @login_required   
 def tareaEliminar(request, task2_id):
     task = get_object_or_404(Task2, pk=task2_id, user=request.user)
@@ -224,8 +256,6 @@ def tareaVerdatos(request):
         'tasks': tasks,
         'people': people
     })
-
-
 
 
 @login_required

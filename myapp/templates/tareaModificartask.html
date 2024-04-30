@@ -1,0 +1,19 @@
+{% extends 'nav.html' %}
+{% block content %}
+<main class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1 class="text-center display-3 py-5"> Nombre: {{ task.title }}</h1>
+            {{error}}
+
+            <form method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button class="btn btn-dark">Save</button>
+
+                <button class="btn btn-dark"formaction="{% url 'tareaVerdatos' %}">Cancelar</button>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}
